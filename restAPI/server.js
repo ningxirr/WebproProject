@@ -4,12 +4,12 @@ app = express()
 port = process.env.PORT || 5001
 
 mongoose = require('mongoose')
-User = require('./api/models/userListModel')
+Contact = require('./api/models/contactListModel')
 
 bodyParser = require('body-parser')
 
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/UserDb', function(error){
+mongoose.connect('mongodb://localhost/ContactList', function(error){
     if(error) throw error
     console.log('Successfully connected');
 })
@@ -20,7 +20,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true}))
 app.use(bodyParser.json())
 
-var routes = require('./api/routes/userListRoutes')
+var routes = require('./api/routes/contactListRoutes')
 routes(app)
 
 app.listen(port)

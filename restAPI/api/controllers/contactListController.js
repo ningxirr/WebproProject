@@ -1,53 +1,56 @@
 'use strict'
 var mongoose = require('mongoose')
-User = mongoose.model('contacts')
+Contact = mongoose.model('contacts')
 
-exports.listAllUsers = function(req, res){
-    var query = { sort: { firstName: 1 } }
-    User.find({}, null, query, function(err, user){
-        if(err) throw err
-        //console.log(user)
-        res.json(user)
-    })
-}
-
-exports.createAUser = function(req, res){
-    var newUser = new User(req.body)
+exports.addNewContact = function(req, res){
+    var newContact = new Contact(req.body)
     console.log(req.body)
-    newUser.save(function(err, user){
+    newContact.save(function(err, contact){
         if(err) throw err
-        res.json(user)
+        // console.log(contact)
+        res.json(contact)
     })
 }
 
-exports.readAUser = function(req, res){
-    //console.log(req.params.userId)
-    User.findById(req.params.userId, function(err, user){
+exports.showAllContact = function(req, res){
+    var query = { sort: { firstName: 1 } }
+    Contact.find({}, null, query, function(err, contact){
         if(err) throw err
-        res.json(user)
+        console.log(contact)
+        res.json(contact)
     })
 }
 
-exports.deleteAUser = function(req, res){
+exports.showOneContact = function(req, res){
+    //console.log(req.params.contactId)
+    Contact.findById(req.params.contactId, function(err, contact){
+        if(err) throw err
+        console.log(contact)
+        res.json(contact)
+    })
+}
+
+exports.editAContact = function(req, res){
+    console.log(req.params.contactId)
+    var contactUser = {}
+    contactUser = req.body
+    console.log(contactUser)
+    Contact.findByIdAndUpdate(req.params.contactId, contactUser, {new: true}, function(err, contact){
+        if(err) throw err
+        // console.log(contact)
+        res.json(contact)
+    })
+}
+
+exports.deleteAContact = function(req, res){
     //console.log(req.params.userId)
-    User.findByIdAndRemove(req.params.userId, function(err, user){
+    Contact.findByIdAndRemove(req.params.contactId, function(err, contact){
         if(err) throw err
         const response = {
-            message: "Delete user id: "+ req.params.userId +" successfully",
-            id: user._id
+            message: "This contact id: "+ req.params.contactId +" has been deleted.",
+            firstname: contact.firstname
         }
         res.json(response)
     })
 }
 
-exports.updateAUser = function(req, res){
-    console.log(req.params.userId)
-    var newUser = {}
-    newUser = req.body
-    console.log(newUser)
-    User.findByIdAndUpdate(req.params.userId, newUser, {new: true}, function(err, user){
-        if(err) throw err
-        console.log(user)
-        res.json(user)
-    })
-}

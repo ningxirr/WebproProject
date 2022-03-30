@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "be94d7d7-173a-4176-ba10-31720c881d4c",
+		"name": "Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add new contact : http://localhost:5001/users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Matt\",\r\n    \"lastName\": \"Giampitro\",\r\n    \"email\": \"matt@vuejs.com\",\r\n    \"mobile\": 990001234,\r\n    \"facebook\": \"https://facebook.com/matt.g\",\r\n    \"imageUrl\": \"https://images.unsplash.com/photo-1648587456176-4969b0124b12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1259&q=80\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5001/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show all user : http://localhost:5001/users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5001/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show one contact : http://localhost:5001/users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5001/contacts/5aa1020ce2f50ebadb85d97a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"contacts",
+						"5aa1020ce2f50ebadb85d97a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete one contact : http://localhost:5001/users",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5001/contacts/624499259d214cbd408075ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"contacts",
+						"624499259d214cbd408075ee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit one contact : http://localhost:5001/users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Matt NO.2\",\r\n    \"lastName\": \"Giampitro\",\r\n    \"email\": \"matt@vuejs.com\",\r\n    \"mobile\": 990001234,\r\n    \"facebook\": \"https://facebook.com/matt.g\",\r\n    \"imageUrl\": \"https://images.unsplash.com/photo-1648587456176-4969b0124b12?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1259&q=80\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5001/contacts/5aa1020ce2f50ebadb85d97a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"contacts",
+						"5aa1020ce2f50ebadb85d97a"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -2,7 +2,7 @@
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 
-var UserSchema = new Schema({
+var ContactSchema = new Schema({
     firstName: {
         type: String,
         Required: 'Please enter'
@@ -29,4 +29,4 @@ var UserSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('Contacts', UserSchema)
+module.exports = mongoose.model('contacts', ContactSchema)
