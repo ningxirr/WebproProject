@@ -3,6 +3,10 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema
 
 var ContactSchema = new Schema({
+    cid:{
+        type: String,
+        Required: 'Please enter'
+    },
     firstName: {
         type: String,
         Required: 'Please enter'
@@ -12,20 +16,17 @@ var ContactSchema = new Schema({
         Required: 'Please enter'
     },
     email: {
-        type: String,
-        Required: 'Please enter'
+        type: String
     },
     mobile: {
-        type: Number,
+        type: String,
         Required: 'Please enter'
     },
     facebook:{
-        type: String,
-        // default :Date.now
+        type: String
     },
     imageUrl:{
-        type: String,
-        // default :Date.now
+        type: String
     }
 })
 

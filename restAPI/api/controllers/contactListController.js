@@ -7,7 +7,6 @@ exports.addNewContact = function(req, res){
     console.log(req.body)
     newContact.save(function(err, contact){
         if(err) throw err
-        // console.log(contact)
         res.json(contact)
     })
 }
@@ -22,20 +21,24 @@ exports.showAllContact = function(req, res){
 }
 
 exports.showOneContact = function(req, res){
-    //console.log(req.params.contactId)
-    Contact.findById(req.params.contactId, function(err, contact){
+    const filter = {cid: req.params.contactId}
+    var id = {}
+    Contact.findOne(filter, function(err, contact){
         if(err) throw err
-        console.log(contact)
+        console.log("contact"+contact)
+        id = mongoose.Types.ObjectId(contact._id)
+    })
+    Contact.findById(mongoose.Types.ObjectId(), function(err, contact){
+        if(err) throw err
         res.json(contact)
     })
 }
 
 exports.editAContact = function(req, res){
-    console.log(req.params.contactId)
     var contactUser = {}
     contactUser = req.body
     console.log(contactUser)
-    Contact.findByIdAndUpdate(req.params.contactId, contactUser, {new: true}, function(err, contact){
+    Contact.findByIdAndUpdate(req.params.cid, contactUser, {new: true}, function(err, contact){
         if(err) throw err
         // console.log(contact)
         res.json(contact)
@@ -43,11 +46,10 @@ exports.editAContact = function(req, res){
 }
 
 exports.deleteAContact = function(req, res){
-    //console.log(req.params.userId)
-    Contact.findByIdAndRemove(req.params.contactId, function(err, contact){
+    Contact.findOneAndRemove(req.params.cid, function(err, contact){
         if(err) throw err
         const response = {
-            message: "This contact id: "+ req.params.contactId +" has been deleted.",
+            message: "This contact id: "+ req.params.cid +" has been deleted.",
             firstname: contact.firstname
         }
         res.json(response)
