@@ -22,14 +22,9 @@ exports.showAllContact = function(req, res){
 
 exports.showOneContact = function(req, res){
     const filter = {cid: req.params.contactId}
-    var id = {}
     Contact.findOne(filter, function(err, contact){
         if(err) throw err
         console.log("contact"+contact)
-        id = mongoose.Types.ObjectId(contact._id)
-    })
-    Contact.findById(mongoose.Types.ObjectId(), function(err, contact){
-        if(err) throw err
         res.json(contact)
     })
 }
@@ -37,19 +32,19 @@ exports.showOneContact = function(req, res){
 exports.editAContact = function(req, res){
     var contactUser = {}
     contactUser = req.body
-    console.log(contactUser)
-    Contact.findByIdAndUpdate(req.params.cid, contactUser, {new: true}, function(err, contact){
+    const filter = {cid: req.params.contactId}
+    Contact.findOneAndUpdate(filter, contactUser, {new: true}, function(err, contact){
         if(err) throw err
-        // console.log(contact)
         res.json(contact)
     })
 }
 
 exports.deleteAContact = function(req, res){
-    Contact.findOneAndRemove(req.params.cid, function(err, contact){
+    const filter = {cid: req.params.contactId}
+    Contact.findOneAndRemove(filter, function(err, contact){
         if(err) throw err
         const response = {
-            message: "This contact id: "+ req.params.cid +" has been deleted.",
+            message: "This contact id: "+ req.params.contactId +" has been deleted.",
             firstname: contact.firstname
         }
         res.json(response)
