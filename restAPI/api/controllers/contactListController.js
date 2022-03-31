@@ -1,6 +1,6 @@
 'use strict'
 var mongoose = require('mongoose')
-Contact = mongoose.model('contacts')
+Contact = mongoose.model('Contacts')
 
 exports.addNewContact = function(req, res){
     var newContact = new Contact(req.body)

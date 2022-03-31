@@ -30,4 +30,4 @@ var ContactSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('contacts', ContactSchema)
+module.exports = mongoose.model('Contacts', ContactSchema)
