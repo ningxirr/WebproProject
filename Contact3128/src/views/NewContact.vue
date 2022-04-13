@@ -52,6 +52,7 @@
 
 <script>
 import axios from 'axios'
+let localhost = "http://localhost:5001/contacts"
 export default {
     name: 'NewContact',
     data () {
@@ -93,7 +94,7 @@ export default {
             else if(newContact.cid!=''||newContact.firstName!=''||newContact.lastName!=''||newContact.mobile!=''){
                 if((newContact.email!=''&&newContact.email.match(mail))||newContact.email==''){
                     this.$router.replace('/contacts')
-                    axios.post('http://localhost:5001/contacts', newContact)
+                    axios.post(localhost, newContact)
                     .then((response)=>{
                         console.log(response)
                     })

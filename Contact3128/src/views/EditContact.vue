@@ -3,7 +3,7 @@
     <br>
     <form>
       <div class="well" style="text-align:left">
-        <h4>Contact <sui-label color="teal">Add</sui-label></h4>
+        <h4>Contact <sui-label color="teal">Edit</sui-label></h4>
         <sui-divider />
         <div class="form-group" >
           <label class="pull-left ">Contact ID <span class="text-danger">*</span></label>
@@ -38,7 +38,7 @@
       <div style="text-align : center;">
         <sui-button-group>
           <!-- <router-link to="/"> -->
-          <sui-button basic color="blue" @click="updateToAPI"><sui-icon name="save" />Save Edit</sui-button>
+          <sui-button basic color="blue" @click="updateToAPI"><sui-icon name="save" />Save</sui-button>
           <!-- </router-link> -->
           <router-link to="/contacts">
             <sui-button basic color="blue"><sui-icon name="close" color="red" />Close</sui-button>
@@ -52,6 +52,7 @@
 
 <script>
 import axios from 'axios'
+let localhost = "http://localhost:5001/contacts"
 export default {
     name: 'EditContact',
     data () {
@@ -69,7 +70,7 @@ export default {
     },
     mounted() {
         // read data
-        axios.get('http://localhost:5001/contacts/'+this.$route.params.contactId)
+        axios.get(localhost+this.$route.params.contactId)
         .then((response)=>{
             this.Contact = response.data
             console.log(this.Contact)
@@ -104,7 +105,7 @@ export default {
             else if(newContact.cid!=''||newContact.firstName!=''||newContact.lastName!=''||newContact.mobile!=''){
                 if((newContact.email!=''&&newContact.email.match(mail))||newContact.email==''){
                     this.$router.replace('/contacts')
-                    axios.post('http://localhost:5001/contacts/'+this.$route.params.contactId, newContact)
+                    axios.post(localhost+this.$route.params.contactId, newContact)
                     .then((response)=>{
                         console.log(response)
                     })

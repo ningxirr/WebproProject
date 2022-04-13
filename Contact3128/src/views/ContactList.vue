@@ -49,6 +49,7 @@
 
 <script>
   import axios from 'axios'
+  let localhost = "http://localhost:5001/contacts"
   export default {
     name: 'Contacts',
     props: {
@@ -61,7 +62,7 @@
       }
     },
     mounted() {
-      axios.get('http://localhost:5001/contacts')
+      axios.get(localhost)
         .then((reponse) => {
           console.log(reponse.data)
           this.Contacts = reponse.data
@@ -78,11 +79,11 @@
         }
       }, */
       delContact(id) {
-        axios.get('http://localhost:5001/contacts/'+id)
+        axios.get(localhost+id)
         .then((response)=>{
             var result = confirm("Want to delete "+response.data.firstName+" "+response.data.lastName+"?");
             if (result) {
-              axios.delete('http://localhost:5001/contacts/' + id)
+              axios.delete(localhost + id)
             .then(() => {
               window.location.reload()
             })
