@@ -40,7 +40,7 @@
           <!-- <router-link to="/"> -->
           <sui-button basic color="blue" @click="updateToAPI"><sui-icon name="save" />Save Edit</sui-button>
           <!-- </router-link> -->
-          <router-link to="/">
+          <router-link to="/contacts">
             <sui-button basic color="blue"><sui-icon name="close" color="red" />Close</sui-button>
           </router-link> 
         </sui-button-group>
