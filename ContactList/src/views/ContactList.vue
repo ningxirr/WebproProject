@@ -15,12 +15,11 @@
     <sui-segment>
       <sui-segment color="teal">
         <div class="input-group">
-          <sui-label ribbon color="teal">Contacts</sui-label>
+          <sui-label size="large" ribbon color="teal">Contacts</sui-label>
           <input class="form-control" placeholder="Search..." v-model="search">
           <sui-button floated="right">Search</sui-button>
           <router-link to="/newcontact">
-            <sui-button floated="right" color="orange">
-              <sui-icon name="plus" />Add</sui-button>
+            <sui-button floated="right" color="orange"><sui-icon name="plus" />Add</sui-button>
           </router-link>
         </div>
       </sui-segment>
@@ -37,7 +36,7 @@
           </sui-card-content>
           <hr>
           <div>
-            <router-link :to="{ path: 'editcontact', name: 'EditContact', params:{contactId: contact_alias.cid} }">
+            <router-link :to="{ path: 'editcontact', name: 'EditContact', params:{contactId: contact_alias._id} }">
               <sui-button color="blue" icon>
                 <sui-icon name="edit" />
               </sui-button>
@@ -79,11 +78,24 @@
           console.log(error)
         })
     },
+    // methods: {
+    //   delContact(cid) {
+    //     axios.delete('http://localhost:5001/contacts/' + cid)
+    //       .then(() => {
+    //         console.log('Delete User ID: ' + cid)
+    //       })
+    //       .catch((error) => {
+    //         console.log(error)
+    //       })
+    //     window.location.reload()
+    //   }
+    // },
+
     methods: {
-      delContact(cid) {
-        axios.delete('http://localhost:5001/contacts/' + cid)
+    DELETE(id) {
+        axios.delete('http://localhost:5001/contacts/' + id)
           .then(() => {
-            console.log('Delete User ID: ' + cid)
+            console.log('Delete User ID: ' + id)
           })
           .catch((error) => {
             console.log(error)
@@ -91,6 +103,7 @@
         window.location.reload()
       }
     },
+
     computed: {
       filterContacts: function () {
         return this.Contacts.filter((contact) => {

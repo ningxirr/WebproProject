@@ -20,32 +20,61 @@ exports.showAllContact = function(req, res){
     })
 }
 
+// exports.showOneContact = function(req, res){
+//     const filter = {cid: req.params.contactId}
+//     Contact.findOne(filter, function(err, contact){
+//         if(err) throw err
+//         console.log("contact"+contact)
+//         res.json(contact)
+//     })
+// }
+
 exports.showOneContact = function(req, res){
-    const filter = {cid: req.params.contactId}
-    Contact.findOne(filter, function(err, contact){
+    Contact.findById(req.params.contactId, function(err, contact){
         if(err) throw err
         console.log("contact"+contact)
         res.json(contact)
     })
 }
 
+// exports.editAContact = function(req, res){
+//     var contactUser = {}
+//     contactUser = req.body
+//     const filter = {cid: req.params.contactId}
+//     Contact.findOneAndUpdate(filter, contactUser, {new: true}, function(err, contact){
+//         if(err) throw err
+//         res.json(contact)
+//     })
+// }
+
 exports.editAContact = function(req, res){
     var contactUser = {}
     contactUser = req.body
-    const filter = {cid: req.params.contactId}
-    Contact.findOneAndUpdate(filter, contactUser, {new: true}, function(err, contact){
+    Contact.findByIdAndUpdate(req.params.contactId, contactUser, {new: true}, function(err, contact){
         if(err) throw err
         res.json(contact)
     })
 }
 
+// exports.deleteAContact = function(req, res){
+//     const filter = {cid: req.params.contactId}
+//     Contact.findOneAndRemove(filter, function(err, contact){
+//         if(err) throw err
+//         const response = {
+//             message: "This contact id: "+ req.params.contactId +" has been deleted.",
+//             firstname: contact.firstname
+//         }
+//         res.json(response)
+//     })
+// }
+
 exports.deleteAContact = function(req, res){
-    const filter = {cid: req.params.contactId}
-    Contact.findOneAndRemove(filter, function(err, contact){
+    //console.log(req.params.userId)
+    Contact.findByIdAndRemove(req.params.contactId, function(err, contact){
         if(err) throw err
         const response = {
             message: "This contact id: "+ req.params.contactId +" has been deleted.",
-            firstname: contact.firstname
+            firstName: contact.firstName
         }
         res.json(response)
     })
