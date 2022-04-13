@@ -50,4 +50,3 @@ exports.deleteAContact = function(req, res){
         res.json(response)
     })
 }
-
