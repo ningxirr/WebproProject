@@ -5,6 +5,7 @@ port = process.env.PORT || 5001
 
 mongoose = require('mongoose')
 Contact = require('./api/models/contactListModel')
+Account = require('./api/models/loginModel')
 
 bodyParser = require('body-parser')
 
@@ -21,7 +22,10 @@ app.use(bodyParser.urlencoded({ extended: true}))
 app.use(bodyParser.json())
 
 var routes = require('./api/routes/contactListRoutes')
+var routeslogin = require('./api/routes/loginRoutes')
+
 routes(app)
+routeslogin(app)
 
 app.listen(port)
 console.log('User List API started on : '+ port)
