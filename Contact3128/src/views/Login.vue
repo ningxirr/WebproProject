@@ -22,7 +22,7 @@
 
 <script>
     import axios from 'axios'
-    let localhost = "http://localhost:5001/contacts"
+    let localhostLogin = "http://localhost:5000/login/"
     export default {
         name: 'Login',
         data() {
@@ -37,7 +37,7 @@
             signIn() {
                 console.log("formData "+this.formData.username+" "+this.formData.password)
                 // axios.post('http://localhost:5001/login/'+this.formData)
-                axios.post(localhost+this.formData.username+'/'+this.formData.password, this.formData)
+                axios.post(localhostLogin+this.formData.username+'/'+this.formData.password, this.formData)
                 .then((response)=>{ 
                     console.log("response"+response.data.username)
                     if(response.data.username === this.formData.username && response.data.password === this.formData.password){

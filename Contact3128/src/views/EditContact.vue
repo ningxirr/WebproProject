@@ -52,7 +52,7 @@
 
 <script>
 import axios from 'axios'
-let localhost = "http://localhost:5001/contacts"
+let localhost = "http://localhost:5000/contacts/"
 export default {
     name: 'EditContact',
     data () {

@@ -1,0 +1,6 @@
+- Repository URL:
+- Vue Server:
+- Node server:
+- Member
+	- Nasreeya Tippayanont 6213128
+	- Pojanut Aramvuttanagul 6213205
