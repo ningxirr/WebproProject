@@ -22,7 +22,7 @@
 
 <script>
     import axios from 'axios'
-    let localhostLogin = "http://localhost:5000/login/"
+    let localhostLogin = "https://limitless-waters-18137.herokuapp.com/login/"
     export default {
         name: 'Login',
         data() {
