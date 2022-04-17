@@ -33,7 +33,6 @@
               </sui-button>
             </router-link>
             <sui-button color="red" icon @click="delContact(contact_alias._id)">
-              <!-- <sui-button color="red" icon @click="delContact(contact_alias.cid)"> -->
               <sui-icon name="eraser" />
             </sui-button>
           </div>
@@ -49,7 +48,7 @@
 
 <script>
   import axios from 'axios'
-  let localhost = "https://limitless-waters-18137.herokuapp.com/contacts/"
+  let localhost = "https://contact-3128-be.herokuapp.com/contacts/"
   export default {
     name: 'Contacts',
     props: {
@@ -72,12 +71,6 @@
         })
     },
     methods: {
-      /* checkdel(_id){
-        var result = confirm("Want to delete?");
-        if (result) {
-          this.delContact(_id)
-        }
-      }, */
       delContact(id) {
         axios.get(localhost+id)
         .then((response)=>{
@@ -98,18 +91,6 @@
         
       } 
     },
-    /* methods: {
-    DELETE(id) {
-        axios.delete('http://localhost:5001/contacts/' + id)
-          .then(() => {
-            console.log('Delete User ID: ' + id)
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-        window.location.reload()
-      }
-    }, */
     computed: {
       filterContacts: function () {
         return this.Contacts.filter((contact) => {

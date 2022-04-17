@@ -22,7 +22,7 @@
 
 <script>
     import axios from 'axios'
-    let localhostLogin = "https://limitless-waters-18137.herokuapp.com/login/"
+    let localhostLogin = "https://contact-3128-be.herokuapp.com/login/"
     export default {
         name: 'Login',
         data() {
@@ -36,7 +36,6 @@
         methods: {
             signIn() {
                 console.log("formData "+this.formData.username+" "+this.formData.password)
-                // axios.post('http://localhost:5001/login/'+this.formData)
                 axios.post(localhostLogin+this.formData.username+'/'+this.formData.password, this.formData)
                 .then((response)=>{ 
                     console.log("response"+response.data.username)

@@ -52,7 +52,7 @@
 
 <script>
 import axios from 'axios'
-let localhost = "https://limitless-waters-18137.herokuapp.com/contacts/"
+let localhost = "https://contact-3128-be.herokuapp.com/contacts/"
 export default {
     name: 'NewContact',
     data () {

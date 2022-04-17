@@ -52,7 +52,7 @@
 
 <script>
 import axios from 'axios'
-let localhost = "https://limitless-waters-18137.herokuapp.com/contacts/"
+let localhost = "https://contact-3128-be.herokuapp.com/contacts/"
 export default {
     name: 'EditContact',
     data () {
@@ -69,7 +69,6 @@ export default {
         }
     },
     mounted() {
-        // read data
         axios.get(localhost+this.$route.params.contactId)
         .then((response)=>{
             this.Contact = response.data
@@ -96,11 +95,9 @@ export default {
             let mail = /\S+@\S+\.\S+/
             if(!newContact.cid.match(c_id)){
                 alert("Please enter 'Contact ID' in the correct format and enter only number")
-                // this.$router.replace('/newcontact')
             }
             else if(!newContact.mobile.match(m_number)){
                 alert("Please enter 'Mobile No' in the correct format and enter only number")
-                // this.$router.replace('/newcontact')
             }
             else if(newContact.cid!=''||newContact.firstName!=''||newContact.lastName!=''||newContact.mobile!=''){
                 if((newContact.email!=''&&newContact.email.match(mail))||newContact.email==''){
@@ -115,12 +112,10 @@ export default {
                 }
                 else{
                     alert("Please enter 'Email' in the correct format")
-                    // this.$router.replace('/newcontact')
                 }
             }
             else{
                 alert("Field cannot be left blank")
-                // this.$router.replace('/newcontact')
             } 
         }
     },  
