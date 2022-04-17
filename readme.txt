@@ -1,6 +1,6 @@
-- Repository URL:
-- Vue Server:
-- Node server:
+- Repository URL: https://bitbucket.org/dnasreeya/contact3128/src/master/
+- Vue Server: https://contact-3128.herokuapp.com/
+- Node server: https://contact-3128-be.herokuapp.com/contacts
 - Member
 	- Nasreeya Tippayanont 6213128
 	- Pojanut Aramvuttanagul 6213205
