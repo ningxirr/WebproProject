@@ -32,4 +32,4 @@ if(port==null || port==""){
 }
 
 app.listen(port)
-console.log('User List API started on : '+ port)
+console.log('Contact List API started on : '+ port)
